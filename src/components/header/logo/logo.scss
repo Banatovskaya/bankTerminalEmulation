@@ -1,0 +1,17 @@
+.bigLogo{
+    display: flex;
+    align-content: center;
+    padding: 1vh;
+    // &__imgWrap{
+        // height: 100%;
+    // }
+    &__img {
+        height: 100%;
+    }
+    &__name {
+        padding-left: 5px;
+        font-size: 36px;
+        font-weight: 900;
+        align-self:center;
+    }
+}

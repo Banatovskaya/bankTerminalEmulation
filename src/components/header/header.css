@@ -1,0 +1,6 @@
+.header {
+  height: 7vh;
+  border-bottom: 3px solid #575151;
+  display: flex;
+  background-color: #fff;
+}
