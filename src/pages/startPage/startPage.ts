@@ -37,7 +37,7 @@ function startPage(): void {
                                     <select name="cards" class="selectCards">
                                         <option value="first">выберите карту</option>
                                         <option value="first">PIN 1111</option>
-                                        <option value="second">PIN 2222</option>
+                                        <option value="second" autofocus>PIN 2222</option>
                                         <option value="third">PIN 3333</option>
                                         <option value="fourth">PIN 4444</option>
                                     </select>
