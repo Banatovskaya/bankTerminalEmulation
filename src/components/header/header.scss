@@ -1,6 +1,12 @@
 .header{
-    height: 7vh;
-    border-bottom: 3px solid rgb(87, 81, 81);
     display: flex;
+    width: 100%;
+    justify-content: space-between;
+    flex-direction: row;
+    align-items:center;
+    flex-wrap: nowrap;
+    height: 7vh;
+    padding: 0 10px;
+    border-bottom: 3px solid #575151;
     background-color: #fff;
 }

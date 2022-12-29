@@ -1,5 +1,5 @@
 import './logo.scss';
-import img from '../../../assets/images/logo.png'
+import img from '../../assets/images/logo.png'
 
 export function addBigLogo(elementToAppend: HTMLElement) : HTMLElement {
     const bigLogo: HTMLElement = document.createElement('div');

@@ -7,16 +7,16 @@ import menuPage from "../menuPage/menuPage";
 import { addTimer } from '../../components/timers/timers';
 import { formatOfDate } from '../../components/timers/timers';
 import { addHeader } from '../../components/header/header';
-import { addBigLogo } from '../../components/header/logo/logo';
+import { addBigLogo } from '../../components/logo/logo';
 import { addPinCode } from '../../components/pinCode/pinCode';
 import { addFooter } from '../../components/footer/footes';
+import { addCancelButton } from '../../components/cancelButton/cancelButton';
 
 
 function startPage(): void {
 ////////
     const container = getContainer();
-    const oldPage = document.querySelector('.page');
-    oldPage?.remove();
+    container.innerHTML = '';
     const page: HTMLElement = document.createElement('div');
     page.classList.add('page');
 /////////
@@ -25,6 +25,7 @@ function startPage(): void {
     
     addBigLogo(header); // in this case we don`t need a variable for next manipulation    
 
+   
 
     page.classList.add(Pages.StartPage);
     page.id = Pages.StartPage;
@@ -35,18 +36,31 @@ function startPage(): void {
                                 <div class='start-page__select'>
                                     <h1 class='start-page__text'>Вставте картку</h1>
                                     <select name="cards" class="selectCards">
-                                        <option value="first">выберите карту</option>
-                                        <option value="first">PIN 1111</option>
-                                        <option value="second" autofocus>PIN 2222</option>
-                                        <option value="third">PIN 3333</option>
-                                        <option value="fourth">PIN 4444</option>
+                                        <option value="none" selected="selected" disabled="disabled">выберите карту</option>
+                                        <option value="1">PIN 1111</option>
+                                        <option value="2">PIN 2222</option>
+                                        <option value="3">PIN 3333</option>
+                                        <option value="4">PIN 4444</option>
                                     </select>
                                 </div> 
                             </div>`;
     container.append(page); 
     const startPageTextWrap: HTMLElement = page.querySelector('.start-page__text-wrap')!;
-    addPinCode(startPageTextWrap);
     
+
+
+    const select:HTMLSelectElement = document.querySelector('.selectCards')!;
+    select.addEventListener('change', (e)=>{
+        console.log(select.value);
+        startPageTextWrap.innerHTML = ``;
+        addPinCode(startPageTextWrap);
+        addCancelButton(header);
+        //footer add back
+
+    })
+    
+
+
     const footer = addFooter(container);
 
     // addTimer(page, formatOfDate['HH:MM']);
