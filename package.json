@@ -5,16 +5,18 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "npx webpack serve",
+    "start": "concurrently \"npx webpack serve\" \"npx json-server db.json --port 3001\"",
     "build": "webpack --mode production",
     "watch": "webpack --mode development --watch"
   },
   "author": "Banatovskaya",
   "license": "ISC",
   "devDependencies": {
+    "concurrently": "^7.6.0",
     "css-loader": "^6.7.3",
     "file-loader": "^6.2.0",
     "html-webpack-plugin": "^5.5.0",
+    "json-server": "^0.17.1",
     "sass": "^1.57.1",
     "sass-loader": "^13.2.0",
     "source-map-loader": "^4.0.1",

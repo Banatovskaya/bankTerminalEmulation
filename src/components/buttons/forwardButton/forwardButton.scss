@@ -1,0 +1,17 @@
+.forwardButton{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+    width: 200px;
+    font-size: 18px;
+    background-color: rgb(30, 177, 38);
+    border: none;
+    line-height: 20px;
+    border-radius: 8px;
+    padding: 0 10px;
+    &__img{
+        height: 100%;
+      
+    }
+}

@@ -1,10 +1,14 @@
 .cancel{
     display: flex;
+    justify-content: space-around;
     align-items: center;
-    height: 40px;
+    height: 80%;
     font-size: 18px;
-    background-color: white;
+    background-color: rgb(30, 177, 38);
     border: none;
     border-left: 2px solid rgb(181, 196, 182);
     line-height: 20px;
+    img{
+        height: 75%;
+    }
 }

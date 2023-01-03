@@ -22,7 +22,7 @@ export function addTimer(elementToAppend : HTMLElement, format : formatOfDate): 
         const SS = time.getSeconds()
         const YYYY = time.getFullYear();
         const monthData = time.getMonth();
-        const month = monthTextFormat[monthData]
+        const month = monthTextFormat[monthData];
         const DD = time.getDate();
         const dayOfWeek = time.getDay();
 
@@ -45,7 +45,7 @@ export function addTimer(elementToAppend : HTMLElement, format : formatOfDate): 
                 divWeekElement.classList.add('time-fullDate__week');
                 divTimeElement.innerHTML = `${addZero(HH)}:${addZero(MM)}`
                 divWeekElement.innerHTML = `${DaysOfWeek[dayOfWeek]}`
-                divDateElement.innerHTML = `${addZero(DD)}.${addZero(monthData)}.${YYYY}`
+                divDateElement.innerHTML = `${addZero(DD)}.${addZero(monthData+1)}.${YYYY}`
                 divElement.append(divTimeElement, divWeekElement, divDateElement)
                 divElement.classList.add('time-fullDate');
             break;

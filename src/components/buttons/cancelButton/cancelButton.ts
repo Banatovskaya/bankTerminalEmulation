@@ -1,7 +1,6 @@
 import './cancelButton.scss';
-import img from '../../assets/images/quit.png';
-import startPage from '../../pages/startPage/startPage';
-
+import img from '../../../assets/images/quit.png';
+import startPage from '../../../pages/startPage/startPage';
 
 export function addCancelButton(elementToAppend: HTMLElement): HTMLButtonElement {
     const button:HTMLButtonElement = document.createElement('button');
