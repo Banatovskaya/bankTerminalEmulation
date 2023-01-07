@@ -4,8 +4,9 @@
 /node_modules
 /.pnp
 .pnp.js
-.css
-.min.css
+*.css
+*.min.css
+!normalize.css
 
 # testing
 /coverage

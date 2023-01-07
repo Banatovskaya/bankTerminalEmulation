@@ -1,19 +1,24 @@
+@import "normalize.css";
+@import "variables";
+
 body {
-    background-color: rgb(17, 17, 17);
-}
+    background-color: black;
+};
 
 * {
     box-sizing: border-box;
 }
 
+
+
 .container {
+    position: relative;
     margin: 0 auto;
     height: 98vh;
     width: 100vh;
     max-height: 840px;
     max-width: 840px;
-    background-color: rgb(248, 245, 245);
-    
+    background-color: white;
 }
 
 .page {

@@ -1,3 +1,5 @@
+@import '../../../variables.scss';
+
 .forwardButton{
     display: flex;
     justify-content: space-between;
@@ -5,7 +7,7 @@
     height: 100%;
     width: 200px;
     font-size: 18px;
-    background-color: rgb(30, 177, 38);
+    background-color:$buttonColor;
     border: none;
     line-height: 20px;
     border-radius: 8px;

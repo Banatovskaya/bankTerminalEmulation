@@ -1,8 +1,28 @@
 {
     "clients": [
         {
-            "id":0,
-            "name": "person1"
+            "id": "1111",
+            "hash": "hashOf1111",
+            "name": "person1",
+            "cashBalance": 1000000
+        },
+        {
+            "id": "2222",
+            "hash": "hashOf2222",
+            "name": "person2",
+            "cashBalance": 999
+        },
+        {
+            "id": "3333",
+            "hash": "hashOf3333",
+            "name": "person3",
+            "cashBalance": 51200
+        },
+        {
+            "id": "4444",
+            "hash": "hashOf4444",
+            "name": "person4",
+            "cashBalance": 32002
         }
     ]
 }

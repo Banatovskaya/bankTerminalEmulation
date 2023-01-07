@@ -6,6 +6,6 @@ export function addForwardButton(elementToAppend: HTMLElement, func : Function, 
     button.classList.add('forwardButton');
     button.innerHTML = `<div class="forwardButton">${buttonName}<img class="forwardButton__img" src=${img}></img></div>`;
     elementToAppend.append(button);
-    button.addEventListener('click', () => func());
+    button.addEventListener('click', () => {func()});
     return button;
 }

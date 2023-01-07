@@ -1,3 +1,6 @@
+// import './normalize.scss';
+import './index.scss';
+
 import startPage from "./pages/startPage/startPage";
 
 export const enum Pages {
