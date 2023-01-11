@@ -1,4 +1,4 @@
-// import './headerName.scss';
+import './headerName.scss';
 import imgDafault from '../../assets/images/3d-square1.png';
 
 export function addheaderName(elementToAppend: HTMLElement, img:ImageData = imgDafault, title: string = ''): HTMLElement {
