@@ -1,8 +1,10 @@
 import { addErrorPinComponent } from "../components/errorPinComponent/errorPinComponent";
 import { getHTMLElement } from "./getElement";
 import startPage from "../pages/startPage/startPage";
+import { ClientData, AccessWithData } from '../interfaces/interfaces';
 
-export async function checkPin(cardNumber : string, pin : string) : Promise<boolean> {
+
+export async function checkPin(cardNumber : string, pin : string) : Promise<AccessWithData> {
 
     const container = getHTMLElement('.container');
 
@@ -28,10 +30,28 @@ export async function checkPin(cardNumber : string, pin : string) : Promise<bool
     });
 
     const data =  response;
-       
+
+    // this whole component is a crutch replacement of web-sokets and server part
+    // access must be transferred separately from data from the server
+
     if (getHash(pin) === data.hash){
-        return data
+        const accessWithData = {
+            access:true,
+            data: data
+        }   
+        return accessWithData;
+
     } else {
-        return false
+        const accessWithData = {
+            access:true,
+            data: {
+                id: '',
+                hash: '',
+                name: '',
+                cashBalance: 0
+            }
+        }   
+        accessWithData.access = false
+        return accessWithData;
     }
 }

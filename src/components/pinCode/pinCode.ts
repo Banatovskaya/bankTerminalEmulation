@@ -1,5 +1,5 @@
 import './pinCode.scss';
-import { getHTMLElement } from '../../servises/getElement';
+import { getHTMLElement } from '../../services/getElement';
 import { addForwardButton } from '../buttons/forwardButton/forwardButton';
 import { addBackButton } from '../buttons/backButton/backButton';
 

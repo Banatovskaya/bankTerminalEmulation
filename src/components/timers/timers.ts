@@ -1,8 +1,8 @@
 import './timers.scss';
 
-export  enum formatOfDate {'HH:MM', 'DD month YYYY', 'HH:MM week/dd.mm.yy' }
+export enum FormatOfDate {'HH:MM', 'DD month YYYY', 'HH:MM week/dd.mm.yy'}
 
-export function addTimer(elementToAppend : HTMLElement, format : formatOfDate): void {
+export function addTimer(elementToAppend : HTMLElement, format : FormatOfDate): void {
     
     let divElement: HTMLElement = document.createElement('div');
 
@@ -27,15 +27,15 @@ export function addTimer(elementToAppend : HTMLElement, format : formatOfDate): 
         const dayOfWeek = time.getDay();
 
         switch (format) {
-            case formatOfDate["DD month YYYY"]:
+            case FormatOfDate["DD month YYYY"]:
                 divElement.innerHTML = `${addZero(DD)} ${month} ${YYYY}`
                 divElement.classList.add('time-date');
             break;
-            case formatOfDate["HH:MM"]:
+            case FormatOfDate["HH:MM"]:
                 divElement.innerHTML = `${addZero(HH)}:${addZero(MM)}:${addZero(SS)}`
                 divElement.classList.add('time-clock');
             break;
-            case formatOfDate["HH:MM week/dd.mm.yy"]:
+            case FormatOfDate["HH:MM week/dd.mm.yy"]:
                 divElement.innerHTML = '';
                 let divTimeElement: HTMLElement = document.createElement('div');
                 divTimeElement.classList.add('time-fullDate__clock');
@@ -53,11 +53,11 @@ export function addTimer(elementToAppend : HTMLElement, format : formatOfDate): 
         
     }
     showTime();
-    if(format === formatOfDate['HH:MM']|| format === formatOfDate['HH:MM week/dd.mm.yy']){
+    if(format === FormatOfDate['HH:MM']|| format === FormatOfDate['HH:MM week/dd.mm.yy']){
         setInterval(showTime,1000);
     } 
 
-    if(format === formatOfDate['DD month YYYY']){
+    if(format === FormatOfDate['DD month YYYY']){
         setInterval(showTime,60000);
     } 
     

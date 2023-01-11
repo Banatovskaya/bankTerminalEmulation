@@ -4,7 +4,7 @@ const path = require('path');
 const isDev = process.env.NODE_ENV === 'development';
 
 module.exports = {
-  devtool: isDev ? 'source-map' : false,
+  // devtool: isDev ? 'eval' : false,
   entry: './src/index.ts', 
   mode: 'development',  
   devServer: {

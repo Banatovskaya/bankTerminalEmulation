@@ -1,0 +1,41 @@
+@import '../../variables.scss';
+
+.menuPage{
+    display: flex;
+
+    &__sideBar{
+        display: flex;
+        flex-wrap: wrap;
+        align-items:stretch;
+        align-content: flex-start;
+        background-color:$mainColor;
+        width: 40%;
+        height: 100%;
+        padding: 20px;
+        overflow: auto;
+    }
+
+    &__sideBarName{
+        margin: 0 $buttonMarginX;
+    }
+   
+    &__content{
+        display: flex;
+        flex-direction: column;
+        background-color: $secondaryColor;
+        width: 60%;
+        height: 100%;
+        padding: 20px;
+        overflow: auto;
+    }
+
+    &__contentWrap{
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    &__contentName{
+        margin: 0 $buttonMarginX;
+    }
+
+}

@@ -4,25 +4,21 @@
     color: rgb(0, 0, 0);
     padding: 5px 15px;
     font-size: 22px;
+    line-height: 24px;
   }
 
   &-clock{
     color: rgb(0, 0, 0);
-    padding: 5px 15px;
     font-size: 48px;
   }
 
   &-fullDate{
     color: rgb(0, 0, 0);
     padding: 5px 15px;
-    font-size: 18px;
     display: grid;
     grid-template-columns: 100px 80px;
     grid-template-areas:'clock week' 
-                      'clock date' ;
-      
-      
-
+                        'clock date' ;
     &__clock{
       grid-area: clock;
       font-size: 42px;
