@@ -8,17 +8,21 @@ import { addCancelButton } from '../../components/buttons/cancelButton/cancelBut
 import { addFooter } from '../../components/footer/footes';
 import { addTimer, FormatOfDate} from '../../components/timers/timers';
 import { addCommonButton } from "../../components/buttons/commonButton/commonButton";
+import { addheaderName } from '../../components/headerName/headerName';
 import img from '../../assets/images/money.png';
 
 function bankingServicesPage(): void {
     const container = getHTMLElement('.container');
     container.innerHTML = '';
-    
+
+    //header 
+    const header = addHeader(container); 
+    addheaderName(header, img, "Банківськи послуги");
+   
+    addCancelButton(header);
+
     const page: HTMLElement = document.createElement('div');
     page.classList.add('page');
-    const header = addHeader(container);  
-    addBigLogo(header);
-    addCancelButton(header);
     page.id = Pages.BankingServicesPage;
     page.classList.add(Pages.BankingServicesPage);
   
