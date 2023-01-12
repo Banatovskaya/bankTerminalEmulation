@@ -1,14 +1,19 @@
 @import '../../variables.scss';
 
 .headerName{
+    position: relative;
     display: flex;
     justify-content: space-around;
     align-items: center;
     font-size: 18px;
     font-weight: bold;
     margin: 10px $buttonMarginX;
+    height: 80%;
     
     &__img{
+        // display: none;
         margin-right: 10px;
+        padding: 5px;
+        height: 100%;
     }
 }

@@ -3,6 +3,7 @@ import { Pages } from "../../interfaces/interfaces";
 import otherServicesPage from '../otherServisesPage/otherServicesPage';
 import bankingServicesPage from '../bankingServisesPage/bankingServicesPage';
 import topUpCardPage from '../topUpCardPage/topUpCardPage';
+import topUpMobilePhone from '../topUpMobilePhone/topUpMobilePhone';
 import { getHTMLElement } from "../../services/getElement";
 import { ClientData } from "../../interfaces/interfaces";
 import { addHeader } from '../../components/header/header';
@@ -45,19 +46,19 @@ function menuPage(data: ClientData): void {
      
     function showContent() {
         addCommonButton(contentWrap, topUpCardPage, img, 'поповнити картку', '40%');
-        addCommonButton(contentWrap, ()=>{alert('не працює')}, undefined, 'поповнити мобільний', '40%');
+        addCommonButton(contentWrap, topUpMobilePhone, undefined, 'поповнити мобільний', '40%');
         addCommonButton(contentWrap, ()=>{alert('не працює')}, undefined, undefined, '40%');
     };
 
     function showSideBar() {
         addCommonButton(sideBar, bankingServicesPage, img, 'банківськи послуги');
         addCommonButton(sideBar, otherServicesPage, img, 'інші операції', );
+        addCommonButton(sideBar, ()=>{alert('не працює')}, undefined, undefined, '42%');
         addCommonButton(sideBar, ()=>{alert('не працює')}, undefined, undefined, '40%');
-        addCommonButton(sideBar, ()=>{alert('не працює')}, undefined, undefined, '40%');
-        addCommonButton(sideBar, ()=>{alert('не працює')}, undefined, undefined, '40%');
-        addCommonButton(sideBar, ()=>{alert('не працює')}, undefined, undefined, '40%');
-        addCommonButton(sideBar, ()=>{alert('не працює')}, undefined, undefined, '40%');
-        addCommonButton(sideBar, ()=>{alert('не працює')}, undefined, undefined, '40%');
+        addCommonButton(sideBar, ()=>{alert('не працює')}, undefined, undefined, '42.5%');
+        addCommonButton(sideBar, ()=>{alert('не працює')}, undefined, undefined, '42.5%');
+        addCommonButton(sideBar, ()=>{alert('не працює')}, undefined, undefined, '42.5%');
+        addCommonButton(sideBar, ()=>{alert('не працює')}, undefined, undefined, '42.5%');
     }
 
     showContent();

@@ -1,0 +1,8 @@
+@import '../../variables.scss';
+.otherServicesPage{
+    display: flex;
+    flex-wrap: wrap;
+    padding: $mainPadding calc($mainPadding*10);
+    align-content: flex-start;
+    overflow: auto;
+}

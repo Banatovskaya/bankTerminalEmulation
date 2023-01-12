@@ -6,12 +6,13 @@
     &__sideBar{
         display: flex;
         flex-wrap: wrap;
+        justify-content: space-between;
         align-items:stretch;
         align-content: flex-start;
         background-color:$mainColor;
         width: 40%;
         height: 100%;
-        padding: 20px;
+        padding: $mainPadding;
         overflow: auto;
     }
 
