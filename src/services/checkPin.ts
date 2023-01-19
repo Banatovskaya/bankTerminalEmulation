@@ -1,8 +1,7 @@
-import { addErrorPinComponent } from "../components/errorPinComponent/errorPinComponent";
+import { addBigMessageComponent } from "../components/bigMessage/bigMessage";
 import { getHTMLElement } from "./getElement";
 import startPage from "../pages/startPage/startPage";
 import { ClientData, AccessWithData } from '../interfaces/interfaces';
-
 
 export async function checkPin(cardNumber : string, pin : string) : Promise<AccessWithData> {
 
@@ -25,33 +24,26 @@ export async function checkPin(cardNumber : string, pin : string) : Promise<Acce
             }
         })
         .catch((err) => {
-           addErrorPinComponent(container, "помилка серверу", startPage );
+           addBigMessageComponent(container, "помилка серверу", startPage );
            throw err;
     });
 
-    const data =  response;
+    let data: ClientData = response;
 
     // this whole component is a crutch replacement of web-sokets and server part
     // access must be transferred separately from data from the server
 
+    let access: boolean;
     if (getHash(pin) === data.hash){
-        const accessWithData = {
-            access:true,
-            data: data
-        }   
-        return accessWithData;
-
+         access = true;
     } else {
-        const accessWithData = {
-            access:true,
-            data: {
-                id: '',
-                hash: '',
-                name: '',
-                cashBalance: 0
-            }
-        }   
-        accessWithData.access = false
-        return accessWithData;
+        access = false;
+        data = {
+            id: '',
+            hash: '',
+            name: '',
+            cashBalance: 0
+        }
     }
+    return {access, data};
 }

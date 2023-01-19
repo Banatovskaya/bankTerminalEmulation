@@ -11,6 +11,7 @@ import { addheaderName } from '../../components/headerName/headerName';
 import img from '../../assets/images/money.png';
 import { addBackButton } from '../../components/buttons/backButton/backButton';
 import menuPage from '../menuPage/menuPage';
+import getMoneyPage from '../getMoneyPage/getMoneyPage';
 
 function bankingServicesPage(): void {
     const container = getHTMLElement('.container');
@@ -31,7 +32,7 @@ function bankingServicesPage(): void {
         page.innerHTML = '';
         addCommonButton(page, topUpCardPage, img, 'поповнити картку', '30%');
         addCommonButton(page, ()=>{alert('баланс за карткою')}, img, 'баланс за карткою', '30%');
-        addCommonButton(page, ()=>{alert('')}, img, 'отримати готівку', '30%');
+        addCommonButton(page, getMoneyPage, img, 'отримати готівку', '30%');
         addCommonButton(page, ()=>{alert('вибачте грошей немає')}, undefined, 'отримати 3 млн готівкою', '30%');
         addCommonButton(page, ()=>{alert('кнопочка не працює')}, undefined, undefined, '30%');
     }

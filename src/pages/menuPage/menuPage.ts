@@ -14,8 +14,7 @@ import { addTimer, FormatOfDate} from '../../components/timers/timers';
 import { addCommonButton } from "../../components/buttons/commonButton/commonButton";
 import img from '../../assets/images/money.png';
 
-
-function menuPage(data: ClientData): void {
+function menuPage(): void {
 
     const container = getHTMLElement('.container');
     container.innerHTML = '';
@@ -69,7 +68,6 @@ function menuPage(data: ClientData): void {
     const footer = addFooter(container);
     addTimer(footer, FormatOfDate['DD month YYYY']);
     addTimer(footer, FormatOfDate['HH:MM']);
-    
 }
 
 export default menuPage

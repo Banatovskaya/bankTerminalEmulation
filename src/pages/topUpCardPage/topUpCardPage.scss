@@ -1,0 +1,32 @@
+@import '../../variables.scss';
+
+.topUpCardPage {
+    display: grid;
+    grid-template-columns: repeat(2, 50%);
+
+    &__input{
+        display: inline-flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items:center;
+        height: 100%;
+        input{
+            height: 50px;
+            margin: 0 auto;
+            width: 50%;
+            border: 0.5px solid rgb(211, 202, 202);
+            border-bottom: 3px solid rgb(87, 167, 87);     
+            &:invalid{
+                color: red
+            }           
+        }
+    }
+
+    &__keysWrap{
+        display: inline-flex;
+        justify-content: center;
+        align-items:center;
+        height: 100%;
+        background-color: $secondaryColor;
+    }
+}

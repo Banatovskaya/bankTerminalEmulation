@@ -5,14 +5,18 @@ import menuPage from './pages/menuPage/menuPage';
 import bankingServicesPage from './pages/bankingServisesPage/bankingServicesPage';
 import otherServicesPage from './pages/otherServisesPage/otherServicesPage';
 import topUpCardPage from './pages/topUpCardPage/topUpCardPage';
+import getMoneyPage from './pages/getMoneyPage/getMoneyPage';
 import { ClientData } from "./interfaces/interfaces";
 
 function app():void {
-    // startPage()
-const data:ClientData = {id: '1111', hash: 'hashOf1111', name: 'person1', cashBalance: 1000000}
-    menuPage(data)
+    startPage()
+// const data:ClientData = {id: '1111', hash: 'hashOf1111', name: 'person1', cashBalance: 1000000}
+    // menuPage(data)
 // bankingServicesPage();
 // otherServicesPage()
+// topUpCardPage();
+// getMoneyPage();
+
 }
 
 

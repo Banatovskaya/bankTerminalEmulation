@@ -2,6 +2,7 @@ import './pinCode.scss';
 import { getHTMLElement } from '../../services/getElement';
 import { addForwardButton } from '../buttons/forwardButton/forwardButton';
 import { addBackButton } from '../buttons/backButton/backButton';
+import { addErrorMessageDiv } from '../errMessageDiv/errMessageDiv';
 
 export async function addPinCode(elementToAppend: HTMLElement) : Promise<string> {
     
@@ -17,17 +18,13 @@ export async function addPinCode(elementToAppend: HTMLElement) : Promise<string>
     const promise: Promise<string> = new Promise((resolve, reject) => {
 
         let pinCode:string;
-
-        function showErrorText():void {
-            const errPinMessage = document.createElement('div');
-            errPinMessage.innerHTML=`PIN повинен містити лише цифри`;
-            errPinMessage.classList.add('pin__errType');
-            pin.append(errPinMessage);
-        }
+        
+        const errText:HTMLDivElement = addErrorMessageDiv(pin, 'PIN повинен містити лише цифри');
+        errText.style.visibility = 'hidden' ;
 
         // add wrap whith hidden buttons in to footer
         const footer : HTMLElement = getHTMLElement('footer');
-        document.querySelector('.buttonWrap')?.remove();
+        document.querySelector('.buttonWrap')?.remove(); // for next efforts
         const buttonWrap = document.createElement('div');
         buttonWrap.classList.add('buttonWrap');
         const backButton = addBackButton(buttonWrap, deleteLastSign, 'коригувати');
@@ -41,7 +38,7 @@ export async function addPinCode(elementToAppend: HTMLElement) : Promise<string>
             input.value = input.value.slice(0, -1);
             if (input.value.length === 0) {
                 backButton.style.visibility = 'hidden';
-            } ; 
+            }; 
             input.focus();
             forwardButton.style.visibility = 'hidden';
         }
@@ -50,13 +47,11 @@ export async function addPinCode(elementToAppend: HTMLElement) : Promise<string>
             resolve(pinCode)
         };    
 
-        footer.append(buttonWrap);
-        //        
+        footer.append(buttonWrap);     
         // check input, show or hide buttons
-        input.addEventListener('keyup', (e)=>{
-            const errText = pin.querySelector('.pin__errType');
-            if (input.value.match(/^\d+$/)){
-                errText?.remove(); 
+        input.addEventListener('keyup', ()=>{
+            if (input.value.match(/\d+$/)){
+                errText.style.visibility = 'hidden';
                 backButton.style.visibility = 'hidden';
                 backButton.style.visibility = 'visible';
 
@@ -69,9 +64,7 @@ export async function addPinCode(elementToAppend: HTMLElement) : Promise<string>
             } else {
                 input.value = '';  
                 backButton.style.visibility = 'hidden';
-                if(!errText){
-                    showErrorText();
-                }   
+                errText.style.visibility = 'visible';
             }
         })
     })

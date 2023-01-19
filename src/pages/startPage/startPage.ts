@@ -10,8 +10,8 @@ import { addPinCode } from '../../components/pinCode/pinCode';
 import { addFooter } from '../../components/footer/footes';
 import { addCancelButton } from '../../components/buttons/cancelButton/cancelButton';
 import { checkPin } from '../../services/checkPin';
-import { addErrorPinComponent } from '../../components/errorPinComponent/errorPinComponent';
-import { AccessWithData } from '../../interfaces/interfaces';
+import { addBigMessageComponent} from '../../components/bigMessage/bigMessage';
+import { setClientData } from '../../services/data';
 
 function startPage(): void {
 
@@ -56,15 +56,17 @@ function startPage(): void {
         async function getPinCode(){
             startPageTextWrap.innerHTML = ``;
             const pinCode = await addPinCode(startPageTextWrap);
-            const accessWithData: AccessWithData = await checkPin(cardId, pinCode)
+            const accessWithData = await checkPin(cardId, pinCode)
             if(accessWithData.access){
-                menuPage(accessWithData.data)
+                setClientData(accessWithData.data)
+                menuPage();
+
             }  else {
                 if (effortNumbers > 1){
                     effortNumbers = effortNumbers - 1;
-                addErrorPinComponent(container, `невірний пінкод залишилось спроб ${effortNumbers}` , getPinCode);
+                    addBigMessageComponent(container, `невірний пінкод залишилось спроб ${effortNumbers}` , getPinCode);
                 } else {
-                    addErrorPinComponent(container, "Картку вилучено" , startPage);
+                    addBigMessageComponent(container, "Картку вилучено" , startPage);
                 }
             }
         }
