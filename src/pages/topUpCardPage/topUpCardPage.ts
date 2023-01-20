@@ -12,6 +12,9 @@ import { addKeyBoard } from '../../components/keyBoard/keyBoard';
 import { addForwardButton } from '../../components/buttons/forwardButton/forwardButton';
 import { addBigMessageComponent } from '../../components/bigMessage/bigMessage';
 import { addErrorMessageDiv } from '../../components/errMessageDiv/errMessageDiv';
+import { getClientData, setClientData } from '../../services/data';
+import { request } from '../../services/http';
+import { ClientData } from '../../interfaces/interfaces';
 import img from '../../assets/images/money.png';
 
 function topUpCardPage(): void {
@@ -38,6 +41,7 @@ function topUpCardPage(): void {
     let errMessage: HTMLDivElement = addErrorMessageDiv(inputWrap, '');
     errMessage.style.visibility = 'hidden';
 
+    // i haven`t done this function separare component because every input can have differente checking
     function addCheckingLogicToInputField(){
         if(input.value.length == 0){
             forwardButton.style.visibility = 'hidden';
@@ -54,9 +58,17 @@ function topUpCardPage(): void {
         };
     }
 
-    function showBigMessageComponents(){
+    function takeMoney(value: string){
         addBigMessageComponent(page, 'покладіть гроші в купюроприймач і натисніть ОК', ()=>{
-            addBigMessageComponent(page, 'рахунок поповнено',);
+            let data = getClientData();
+            let newClientData: ClientData;
+            newClientData = {...data};
+            newClientData.cashBalance = data.cashBalance + (+value);    
+            request(data.id, undefined, 'PUT', JSON.stringify(newClientData))
+            .then(()=>{
+                setClientData(newClientData)
+                addBigMessageComponent(page, 'рахунок поповнено',);
+            })
         });
         input.value = '';   
         forwardButton.style.visibility = 'hidden';
@@ -70,7 +82,7 @@ function topUpCardPage(): void {
     })
 
     // events for common kayboard
-    input.addEventListener('keyup', (e)=>{
+    input.addEventListener('keyup', ()=>{
         if ((input.value.match(/^\d+$/)) ){
             addCheckingLogicToInputField();
         }
@@ -78,7 +90,7 @@ function topUpCardPage(): void {
             input.value = '';
             forwardButton.style.visibility = 'hidden';
             errMessage.style.visibility = 'visible'; 
-            errMessage.innerHTML = 'тільки цифри'  ;        
+            errMessage.innerHTML = 'тільки цифри' ;        
         }
     })
        
@@ -88,7 +100,7 @@ function topUpCardPage(): void {
     const footer = addFooter(container);
     addBackButton(footer, menuPage, 'назад');
     addTimer(footer, FormatOfDate['DD month YYYY']);   
-    const forwardButton = addForwardButton(footer, showBigMessageComponents, 'Далі');
+    const forwardButton = addForwardButton(footer, () => takeMoney(input.value), 'Далі');
     forwardButton.style.visibility = 'hidden';
 }
 

@@ -47,7 +47,7 @@ function startPage(): void {
     const startPageTextWrap: HTMLElement = page.querySelector('.startPage__text-wrap')!;
     const select:HTMLSelectElement = document.querySelector('.selectCards')!;
    
-    select.addEventListener('change', (e)=>{
+    select.addEventListener('change', ()=>{
         let effortNumbers = 3;
         startPageTextWrap.innerHTML = ``;
         addCancelButton(header);
