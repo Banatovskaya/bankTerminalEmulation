@@ -8,12 +8,14 @@ import { addheaderName } from '../../components/headerName/headerName';
 import { addCancelButton } from '../../components/buttons/cancelButton/cancelButton';
 import { addBackButton } from '../../components/buttons/backButton/backButton';
 import { addTimer, FormatOfDate } from '../../components/timers/timers';
-import { getClientData } from '../../services/data';
 import { addPinCode } from '../../components/pinCode/pinCode';
 import menuPage from '../menuPage/menuPage';
+import { addBigMessageComponent } from '../../components/bigMessage/bigMessage';
+import { getHash } from '../../services/getHash';
+import { clientData, setClientData } from '../../services/data';
+import { request } from '../../services/http';
 
-
- function changePinCodePage(): void {
+function changePinCodePage(): void {
     const container = getHTMLElement('.container');
     container.innerHTML = '';
     
@@ -27,7 +29,9 @@ import menuPage from '../menuPage/menuPage';
     page.classList.add('page');
     page.id = Pages.ChangePinCodePage;
     page.classList.add(Pages.ChangePinCodePage);
-    const cash: ClientData = getClientData();
+    const changePin = document.createElement('div');
+    changePin.classList.add('changePin');
+    page.append(changePin);
     container.append(page);  
    
     //footer
@@ -36,8 +40,27 @@ import menuPage from '../menuPage/menuPage';
     addTimer(footer, FormatOfDate['HH:MM']);
 
     async function getPinCode(){
-        const pinCode = await addPinCode(page);
-        console.log(pinCode)
+    
+        let firstPIN = await addPinCode(changePin);
+        let title = document.createElement('div');
+        title.classList.add('changePin__title');
+        title.innerHTML=`Продублюйте ПІН`;
+        changePin.append(title );
+        let secondPin = await addPinCode(changePin);
+        
+        if(firstPIN == secondPin){
+            let data = clientData;
+            let newClientData: ClientData;
+            newClientData = {...data};
+            newClientData.hash = getHash(firstPIN);    
+            request(data.id, undefined, 'PUT', JSON.stringify(newClientData))
+            .then(()=>{
+                setClientData(newClientData)
+                addBigMessageComponent(changePin, 'ПИН код змінено', ()=>menuPage());
+            })      
+        } else {
+            addBigMessageComponent(changePin, 'ПИН не співпадає спробуйте ще раз', ()=>changePinCodePage());
+        }
     }
     getPinCode(); 
 

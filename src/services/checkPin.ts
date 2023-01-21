@@ -3,12 +3,8 @@ import { getHTMLElement } from "./getElement";
 import startPage from "../pages/startPage/startPage";
 import { ClientData, AccessWithData } from '../interfaces/interfaces';
 import { request } from "./http";
-
+import { getHash } from "./getHash";
 export async function checkPin(cardNumber : string, pin : string) : Promise<AccessWithData> {
-
-    function getHash(pin:string) {
-       return 'hashOf' + pin;
-    } 
 
     let data:ClientData = await request(cardNumber)
      

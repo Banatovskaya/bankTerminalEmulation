@@ -13,7 +13,7 @@ import { addBigMessageComponent } from '../../components/bigMessage/bigMessage';
 import { addForwardButton } from '../../components/buttons/forwardButton/forwardButton';
 import { addErrorMessageDiv } from '../../components/errMessageDiv/errMessageDiv';
 import { ClientData } from '../../interfaces/interfaces';
-import { getClientData, setClientData } from '../../services/data';
+import { setClientData, clientData } from '../../services/data';
 import { request } from '../../services/http';
 import img from '../../assets/images/money.png';
 
@@ -63,7 +63,7 @@ function getMoneyPage(): void {
     let errMessage: HTMLDivElement = addErrorMessageDiv(inputDiv, '');
     errMessage.style.visibility = 'hidden';
 
-     // I haven`t done this function separare component because every input can have differente checking
+    // I haven`t done this function separare component because every input can have differente checking
     function addCheckingLogicToInputField(){
         if(input.value.length == 0){
             forwardButton.style.visibility = 'hidden';
@@ -85,7 +85,7 @@ function getMoneyPage(): void {
     }
 
     function giveMoney(value:String){
-        let data = getClientData();
+        let data = clientData;
         if (data.cashBalance < +value){
             addBigMessageComponent(page, 'недостатньо грошей')
         } else{
@@ -101,7 +101,6 @@ function getMoneyPage(): void {
             input.value = '';   
             forwardButton.style.visibility = 'hidden';  
         }
-        
     };
 
     const keyBoard = addKeyBoard(keysWrap, input); 

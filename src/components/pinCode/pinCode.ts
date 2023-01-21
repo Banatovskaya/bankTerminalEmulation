@@ -2,7 +2,6 @@ import './pinCode.scss';
 import { getHTMLElement } from '../../services/getElement';
 import { addForwardButton } from '../buttons/forwardButton/forwardButton';
 import { addBackButton } from '../buttons/backButton/backButton';
-import { addErrorMessageDiv } from '../errMessageDiv/errMessageDiv';
 
 export async function addPinCode(elementToAppend: HTMLElement) : Promise<string> {
     
@@ -14,13 +13,10 @@ export async function addPinCode(elementToAppend: HTMLElement) : Promise<string>
     const input = pin.querySelector('input')!;
     input.focus();
 
-    // promise which wait select of card and send pin 
+    // promise which send pin 
     const promise: Promise<string> = new Promise((resolve, reject) => {
 
         let pinCode:string;
-        
-        const errText:HTMLDivElement = addErrorMessageDiv(pin, 'PIN повинен містити лише цифри');
-        errText.style.visibility = 'hidden' ;
 
         // add wrap whith hidden buttons in to footer
         const footer : HTMLElement = getHTMLElement('footer');
@@ -51,7 +47,6 @@ export async function addPinCode(elementToAppend: HTMLElement) : Promise<string>
         // check input, show or hide buttons
         input.addEventListener('keyup', ()=>{
             if (input.value.match(/\d+$/)){
-                errText.style.visibility = 'hidden';
                 backButton.style.visibility = 'hidden';
                 backButton.style.visibility = 'visible';
 
@@ -64,7 +59,6 @@ export async function addPinCode(elementToAppend: HTMLElement) : Promise<string>
             } else {
                 input.value = '';  
                 backButton.style.visibility = 'hidden';
-                errText.style.visibility = 'visible';
             }
         })
     })

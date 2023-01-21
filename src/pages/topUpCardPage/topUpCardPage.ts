@@ -12,7 +12,8 @@ import { addKeyBoard } from '../../components/keyBoard/keyBoard';
 import { addForwardButton } from '../../components/buttons/forwardButton/forwardButton';
 import { addBigMessageComponent } from '../../components/bigMessage/bigMessage';
 import { addErrorMessageDiv } from '../../components/errMessageDiv/errMessageDiv';
-import { getClientData, setClientData } from '../../services/data';
+import {setClientData } from '../../services/data';
+import { clientData } from '../../services/data';
 import { request } from '../../services/http';
 import { ClientData } from '../../interfaces/interfaces';
 import img from '../../assets/images/money.png';
@@ -60,7 +61,7 @@ function topUpCardPage(): void {
 
     function takeMoney(value: string){
         addBigMessageComponent(page, 'покладіть гроші в купюроприймач і натисніть ОК', ()=>{
-            let data = getClientData();
+            let data = clientData;
             let newClientData: ClientData;
             newClientData = {...data};
             newClientData.cashBalance = data.cashBalance + (+value);    

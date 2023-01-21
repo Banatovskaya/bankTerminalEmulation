@@ -8,9 +8,8 @@ import { addheaderName } from '../../components/headerName/headerName';
 import { addCancelButton } from '../../components/buttons/cancelButton/cancelButton';
 import { addBackButton } from '../../components/buttons/backButton/backButton';
 import { addTimer, FormatOfDate } from '../../components/timers/timers';
-import { getClientData } from '../../services/data';
+import { clientData } from '../../services/data';
 import menuPage from '../menuPage/menuPage';
-
 
 function cardBallancePage(): void {
     const container = getHTMLElement('.container');
@@ -26,7 +25,7 @@ function cardBallancePage(): void {
     page.classList.add('page');
     page.id = Pages.CardBallancePage;
     page.classList.add(Pages.CardBallancePage);
-    const cash: ClientData = getClientData();
+    const cash: ClientData = clientData;
     page.innerHTML = `  <div class="cardBallance">
                             <div class="cardBallance__value">залишок: ${cash.cashBalance} грн</div>
                         </div>`

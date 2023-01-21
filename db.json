@@ -4,13 +4,13 @@
       "id": "1111",
       "hash": "hashOf1111",
       "name": "person1",
-      "cashBalance": 7
+      "cashBalance": 99908
     },
     {
       "id": "2222",
       "hash": "hashOf2222",
       "name": "person2",
-      "cashBalance": 999
+      "cashBalance": 699
     },
     {
       "id": "3333",

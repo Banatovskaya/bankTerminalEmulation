@@ -12,18 +12,11 @@
     background-color: $mainColor;
     margin: 10px $buttonMarginX;
     box-shadow: 5px 5px 5px 5px $secondaryButtonShadow;
-    // line-height: 20px;
     border: none;
     border-radius: 8px;
     &__img{
         height: 20px;
         align-self: flex-start;
         justify-self:flex-start;
-    }
-    &__text{
-        // height: 80%;
-        // display: inline;
-        // justify-self:end;
-        // align-self: center;
     }
 }
