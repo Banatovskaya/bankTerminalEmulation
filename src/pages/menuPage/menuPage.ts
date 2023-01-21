@@ -5,7 +5,6 @@ import bankingServicesPage from '../bankingServisesPage/bankingServicesPage';
 import topUpCardPage from '../topUpCardPage/topUpCardPage';
 import topUpMobilePhone from '../topUpMobilePhone/topUpMobilePhone';
 import { getHTMLElement } from "../../services/getElement";
-import { ClientData } from "../../interfaces/interfaces";
 import { addHeader } from '../../components/header/header';
 import { addBigLogo } from '../../components/logo/logo';
 import { addCancelButton } from '../../components/buttons/cancelButton/cancelButton';

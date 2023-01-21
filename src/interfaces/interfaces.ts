@@ -5,7 +5,9 @@ export const enum Pages {
     OtherServicesPage = 'otherServicesPage',
     TopUpCardPage = 'topUpCardPage',
     TopUpMobilePhonePage = 'topUpMobilePhonePage',
-    GetMoneyPage = 'getMoneyPage'
+    GetMoneyPage = 'getMoneyPage',
+    CardBallancePage = 'cardBallancePage',
+    ChangePinCodePage = 'changePinCodePage'
 }
 
 export interface ClientData{

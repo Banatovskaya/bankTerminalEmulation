@@ -42,11 +42,15 @@ function startPage(): void {
                                 </select>
                             </div> 
                         </div>`;
-    container.append(page); 
+    container.append(page);   
 
+    //footer
+    const footer = addFooter(container);
+    addTimer(footer, FormatOfDate['HH:MM week/dd.mm.yy']);
+
+    //select 
     const startPageTextWrap: HTMLElement = page.querySelector('.startPage__text-wrap')!;
     const select:HTMLSelectElement = document.querySelector('.selectCards')!;
-   
     select.addEventListener('change', ()=>{
         let effortNumbers = 3;
         startPageTextWrap.innerHTML = ``;
@@ -72,10 +76,6 @@ function startPage(): void {
         }
         getPinCode(); 
     })
-
-    //footer
-    const footer = addFooter(container);
-    addTimer(footer, FormatOfDate['HH:MM week/dd.mm.yy']);
 
 }
 

@@ -8,7 +8,7 @@ export async function addPinCode(elementToAppend: HTMLElement) : Promise<string>
     
     const pin: HTMLElement = document.createElement('div');
     pin.classList.add('pin');
-    pin.innerHTML = `<div class = "pin__text">введите ПИН</div>
+    pin.innerHTML = `<div class = "pin__text">введіть ПIН</div>
                     <input class="pin__input" type='password' maxlength=4/>`;
     elementToAppend.append(pin);
     const input = pin.querySelector('input')!;

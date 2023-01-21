@@ -1,9 +1,7 @@
 import './otherServicesPage.scss';
 import { Pages } from "../../interfaces/interfaces";
 import { getHTMLElement } from "../../services/getElement";
-import { ClientData } from "../../interfaces/interfaces";
 import { addHeader } from '../../components/header/header';
-import { addBigLogo } from '../../components/logo/logo';
 import { addCancelButton } from '../../components/buttons/cancelButton/cancelButton';
 import { addFooter } from '../../components/footer/footes';
 import { addTimer, FormatOfDate} from '../../components/timers/timers';
@@ -12,6 +10,7 @@ import { addBackButton } from '../../components/buttons/backButton/backButton';
 import { addheaderName } from '../../components/headerName/headerName';
 import img from '../../assets/images/money.png';
 import menuPage from '../menuPage/menuPage';
+import changePinCodePage from '../changePineCodePage/changePinCodePage';
 
 function otherServicesPage(): void {
     const container = getHTMLElement('.container');
@@ -30,7 +29,7 @@ function otherServicesPage(): void {
 
     function showOtherServicesPanel() {
         page.innerHTML = '';
-        addCommonButton(page, alert, img, 'змінити ПІНкод', );
+        addCommonButton(page, changePinCodePage, img, 'змінити ПІНкод', );
         addCommonButton(page, ()=>{alert('не працює')}, undefined, undefined, '100%');
         addCommonButton(page, ()=>{alert('не працює')}, undefined, undefined, '100%');
     }

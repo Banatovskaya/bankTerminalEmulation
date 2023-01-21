@@ -72,7 +72,7 @@ function getMoneyPage(): void {
             input.value = '';
         } else if(+input.value % 100 ){
             errMessage.style.visibility = 'visible'; 
-            errMessage.innerHTML = 'введіть сумму гратну 100' ;
+            errMessage.innerHTML = 'введіть сумму кратну 100' ;
             forwardButton.style.visibility = 'hidden';
         } else if(+input.value > 10000){
             errMessage.style.visibility = 'visible'; 
