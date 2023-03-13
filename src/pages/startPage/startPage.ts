@@ -12,8 +12,9 @@ import { addCancelButton } from '../../components/buttons/cancelButton/cancelBut
 import { checkPin } from '../../services/checkPin';
 import { addBigMessageComponent} from '../../components/bigMessage/bigMessage';
 import { setClientData } from '../../services/data';
+import { request } from '../../services/http';
 
-function startPage(): void {
+async function startPage(): Promise<void> {
 
     const container = getHTMLElement('.container');
     container.innerHTML = '';
@@ -27,6 +28,12 @@ function startPage(): void {
     page.classList.add('page');
     page.classList.add(Pages.StartPage);
     page.id = Pages.StartPage;
+    
+    let pin = async(cardNumber:string) => {
+        let data:string = (await request(cardNumber)).hash.slice(6);
+        return data;
+    }
+
     page.innerHTML = `  <div class="startPage__img-wrap">
                             <img class="startPage__img" src=${img} alt="img putCard">
                         </div> 
@@ -35,10 +42,10 @@ function startPage(): void {
                                 <h1 class='startPage__text'>Вставте картку</h1>
                                 <select name="cards" class="selectCards">
                                     <option value="none" selected="selected" disabled="disabled">выберите карту</option>
-                                    <option value="1111">PIN 1111</option>
-                                    <option value="2222">PIN 2222</option>
-                                    <option value="3333">PIN 3333</option>
-                                    <option value="4444">PIN 4444</option>
+                                    <option value="1111">PIN ${await pin('1111')}</option>
+                                    <option value="2222">PIN ${await pin('2222')}</option>
+                                    <option value="3333">PIN ${await pin('3333')}</option>
+                                    <option value="4444">PIN ${await pin('4444')}</option>
                                 </select>
                             </div> 
                         </div>`;
