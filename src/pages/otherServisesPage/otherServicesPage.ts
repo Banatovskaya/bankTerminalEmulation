@@ -11,6 +11,8 @@ import { addheaderName } from '../../components/headerName/headerName';
 import img from '../../assets/images/money.png';
 import menuPage from '../menuPage/menuPage';
 import changePinCodePage from '../changePineCodePage/changePinCodePage';
+import { Languages } from '../../services/mainLanguage';
+import { mainLanguage } from '../../services/mainLanguage';
 
 function otherServicesPage(): void {
     const container = getHTMLElement('.container');
@@ -18,7 +20,7 @@ function otherServicesPage(): void {
     
     //header
     const header = addHeader(container);  
-    addheaderName(header, img, "Інші операції");
+    addheaderName(header, img, `${mainLanguage==Languages.Ukrainian?'інші операції':'other operations'}`);
     addCancelButton(header);
 
     // middle -> Page
@@ -29,9 +31,9 @@ function otherServicesPage(): void {
 
     function showOtherServicesPanel() {
         page.innerHTML = '';
-        addCommonButton(page, changePinCodePage, img, 'змінити ПІНкод', );
-        addCommonButton(page, ()=>{alert('не працює')}, undefined, undefined, '100%');
-        addCommonButton(page, ()=>{alert('не працює')}, undefined, undefined, '100%');
+        addCommonButton(page, changePinCodePage, img, `${mainLanguage==Languages.Ukrainian?'змінити ПІН':'change PIN'}`, );
+        // addCommonButton(page, ()=>{alert('не працює')}, undefined, undefined, '100%');
+        
     }
     showOtherServicesPanel()
 
@@ -39,7 +41,7 @@ function otherServicesPage(): void {
 
     //footer
     const footer = addFooter(container);
-    addBackButton(footer, menuPage, 'назад');
+    addBackButton(footer, menuPage, );
     addTimer(footer, FormatOfDate['DD month YYYY']);
 
 }

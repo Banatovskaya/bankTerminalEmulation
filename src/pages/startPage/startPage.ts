@@ -13,6 +13,9 @@ import { checkPin } from '../../services/checkPin';
 import { addBigMessageComponent} from '../../components/bigMessage/bigMessage';
 import { setClientData } from '../../services/data';
 import { request } from '../../services/http';
+import { addLanguagesPanel } from '../../components/languages/languages';
+import { mainLanguage } from '../../services/mainLanguage';
+import { Languages } from '../../services/mainLanguage';
 
 async function startPage(): Promise<void> {
 
@@ -22,6 +25,7 @@ async function startPage(): Promise<void> {
     //header
     const header = addHeader(container);  //if we need a variable for next manipulation
     addBigLogo(header); // in this case we don`t need a variable for next manipulation   
+    addLanguagesPanel(header, startPage);
 
     //middle -> Page
     const page: HTMLElement = document.createElement('div');
@@ -39,9 +43,10 @@ async function startPage(): Promise<void> {
                         </div> 
                         <div class='startPage__text-wrap'>
                             <div class='startPage__select'>
-                                <h1 class='startPage__text'>Вставте картку</h1>
+                                <h1 class='startPage__text'>${mainLanguage==Languages.Ukrainian?'Вставте картку':'Insert card'}</h1>
                                 <select name="cards" class="selectCards">
-                                    <option value="none" selected="selected" disabled="disabled">выберите карту</option>
+                                    <option value="none" selected="selected" disabled="disabled">
+                                    ${mainLanguage==Languages.Ukrainian?'виберіть картку':'select card'}</option>
                                     <option value="1111">PIN ${await pin('1111')}</option>
                                     <option value="2222">PIN ${await pin('2222')}</option>
                                     <option value="3333">PIN ${await pin('3333')}</option>

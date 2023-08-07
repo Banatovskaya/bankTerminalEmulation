@@ -16,6 +16,8 @@ import { ClientData } from '../../interfaces/interfaces';
 import { setClientData, clientData } from '../../services/data';
 import { request } from '../../services/http';
 import img from '../../assets/images/money.png';
+import { Languages } from '../../services/mainLanguage';
+import { mainLanguage } from '../../services/mainLanguage';
 
 function getMoneyPage(): void {
     const container = getHTMLElement('.container');
@@ -23,7 +25,7 @@ function getMoneyPage(): void {
 
     //header 
     const header = addHeader(container); 
-    addheaderName(header, img, "виплата готівки");
+    addheaderName(header, img, `${mainLanguage==Languages.Ukrainian?'виплата готівки':'cash payment'}`);
     addTimer(header, FormatOfDate['DD month YYYY']);   
     addCancelButton(header);
 
@@ -72,11 +74,11 @@ function getMoneyPage(): void {
             input.value = '';
         } else if(+input.value % 100 ){
             errMessage.style.visibility = 'visible'; 
-            errMessage.innerHTML = 'введіть сумму кратну 100' ;
+            errMessage.innerHTML = `${mainLanguage==Languages.Ukrainian?'введіть суму кратну 100':'enter the amount in multiples of 100'}` ;
             forwardButton.style.visibility = 'hidden';
         } else if(+input.value > 10000){
             errMessage.style.visibility = 'visible'; 
-            errMessage.innerHTML = 'введіть сумму не більше 10 000 грн' ;
+            errMessage.innerHTML = `${mainLanguage==Languages.Ukrainian?'введіть суму не більше 10 000 грн':'enter amount no more than 10 000 UAN'}`;
             forwardButton.style.visibility = 'hidden';
         } else {
             forwardButton.style.visibility = 'visible';
@@ -87,9 +89,9 @@ function getMoneyPage(): void {
     function giveMoney(value:String){
         let data = clientData;
         if (data.cashBalance < +value){
-            addBigMessageComponent(page, 'недостатньо грошей')
+            addBigMessageComponent(page, `${mainLanguage==Languages.Ukrainian?'недостатньо грошей':'not anough money on the kard'}`)
         } else{
-            addBigMessageComponent(page, 'отримайте гроші', ()=>{
+            addBigMessageComponent(page, `${mainLanguage==Languages.Ukrainian?'отримайте гроші':'take you money'}`, ()=>{
                 let newClientData: ClientData;
                 newClientData = {...data};
                 newClientData.cashBalance = data.cashBalance - (+value);    
@@ -119,7 +121,7 @@ function getMoneyPage(): void {
             input.value = '';
             forwardButton.style.visibility = 'hidden';
             errMessage.style.visibility = 'visible'; 
-            errMessage.innerHTML = 'взагалі на терміналі немає букв, тільки цифри' ;        
+            errMessage.innerHTML = `${mainLanguage==Languages.Ukrainian?'тільки цифри':'only numbers'}` ;        
         }
     })
     
@@ -127,8 +129,8 @@ function getMoneyPage(): void {
 
      //footer
     const footer = addFooter(container);
-    addBackButton(footer, menuPage, 'назад');
-    const forwardButton = addForwardButton(footer, ()=> giveMoney(input.value), 'Далі');
+    addBackButton(footer, menuPage, );
+    const forwardButton = addForwardButton(footer, ()=> giveMoney(input.value), `${mainLanguage==Languages.Ukrainian?'ДАЛІ':'NEXT'}`);
     forwardButton.style.visibility = 'hidden';
 }
 

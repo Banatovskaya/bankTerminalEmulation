@@ -9,6 +9,8 @@ import { addTimer, FormatOfDate} from '../../components/timers/timers';
 import { addheaderName } from '../../components/headerName/headerName';
 import { addBackButton } from '../../components/buttons/backButton/backButton';
 import img from '../../assets/images/phone.png';
+import { Languages } from '../../services/mainLanguage';
+import { mainLanguage } from '../../services/mainLanguage';
 
 function topUpMobilePhonePage(): void {
     const container = getHTMLElement('.container');
@@ -26,13 +28,13 @@ function topUpMobilePhonePage(): void {
     page.classList.add(Pages.TopUpMobilePhonePage);
     const title: HTMLElement = document.createElement('H1');
     page.classList.add('title');
-    title.innerHTML = `логіка та структура компонента ще не прописана`;
+    title.innerHTML = `${mainLanguage==Languages.Ukrainian?'логіка та структура компонента ще не прописана':'component structure and logic is not defined'}`;
     page.append(title);
     container.append(page);  
 
      //footer
     const footer = addFooter(container);
-    addBackButton(footer, menuPage, 'назад');
+    addBackButton(footer, menuPage, );
     addTimer(footer, FormatOfDate['DD month YYYY']);
     addTimer(footer, FormatOfDate['HH:MM']);
 }

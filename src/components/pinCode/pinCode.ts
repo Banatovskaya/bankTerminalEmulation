@@ -2,12 +2,14 @@ import './pinCode.scss';
 import { getHTMLElement } from '../../services/getElement';
 import { addForwardButton } from '../buttons/forwardButton/forwardButton';
 import { addBackButton } from '../buttons/backButton/backButton';
+import { Languages } from '../../services/mainLanguage';
+import { mainLanguage } from '../../services/mainLanguage';
 
 export async function addPinCode(elementToAppend: HTMLElement) : Promise<string> {
     
     const pin: HTMLElement = document.createElement('div');
     pin.classList.add('pin');
-    pin.innerHTML = `<div class = "pin__text">введіть ПIН</div>
+    pin.innerHTML = `<div class = "pin__text">${mainLanguage==Languages.Ukrainian?'введіть ПІН':'enter PIN'}</div>
                     <input class="pin__input" type='password' maxlength=4/>`;
     elementToAppend.append(pin);
     const input = pin.querySelector('input')!;
@@ -23,10 +25,10 @@ export async function addPinCode(elementToAppend: HTMLElement) : Promise<string>
         document.querySelector('.buttonWrap')?.remove(); // for next efforts
         const buttonWrap = document.createElement('div');
         buttonWrap.classList.add('buttonWrap');
-        const backButton = addBackButton(buttonWrap, deleteLastSign, 'коригувати');
+        const backButton = addBackButton(buttonWrap, deleteLastSign, `${mainLanguage==Languages.Ukrainian?'коригувати':'to correct'}`);
         backButton.classList.add('marginLR');
         backButton.style.visibility = 'hidden';
-        const forwardButton = addForwardButton(buttonWrap, sendPinCode, 'підтвердити'); 
+        const forwardButton = addForwardButton(buttonWrap, sendPinCode, `${mainLanguage==Languages.Ukrainian?'підтвердити':'to confirm'}`); 
         forwardButton.classList.add('marginLR');
         forwardButton.style.visibility = 'hidden';
 

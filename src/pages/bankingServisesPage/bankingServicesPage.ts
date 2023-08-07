@@ -13,6 +13,8 @@ import { addBackButton } from '../../components/buttons/backButton/backButton';
 import menuPage from '../menuPage/menuPage';
 import getMoneyPage from '../getMoneyPage/getMoneyPage';
 import cardBallancePage from '../cardBallancePage/cardBallancePage';
+import { Languages } from '../../services/mainLanguage';
+import { mainLanguage } from '../../services/mainLanguage';
 
 function bankingServicesPage(): void {
     const container = getHTMLElement('.container');
@@ -20,7 +22,7 @@ function bankingServicesPage(): void {
 
     //header 
     const header = addHeader(container); 
-    addheaderName(header, img, "Банківськи послуги");
+    addheaderName(header, img, `${mainLanguage==Languages.Ukrainian?'Банківськи послуги':'Bank servises'}`);
     addCancelButton(header);
 
      // middle -> Page
@@ -31,11 +33,10 @@ function bankingServicesPage(): void {
   
     function showBankingServicesPanel() {
         page.innerHTML = '';
-        addCommonButton(page, topUpCardPage, img, 'поповнити картку', '30%');
-        addCommonButton(page, cardBallancePage, img, 'баланс за карткою', '30%');
-        addCommonButton(page, getMoneyPage, img, 'отримати готівку', '30%');
-        addCommonButton(page, ()=>{alert('кнопочка не працює')}, undefined, undefined, '30%');
-        addCommonButton(page, ()=>{alert('кнопочка не працює')}, undefined, undefined, '30%');
+        addCommonButton(page, topUpCardPage, img, `${mainLanguage==Languages.Ukrainian?'поповнити картку':'top up the card'}`, '30%');
+        addCommonButton(page, cardBallancePage, img, `${mainLanguage==Languages.Ukrainian?'баланс за карткою':'card balance'}`, '30%');
+        addCommonButton(page, getMoneyPage, img, `${mainLanguage==Languages.Ukrainian?'отримати готівку':'get cash'}`, '30%');
+        // addCommonButton(page, ()=>{alert('does not work')}, undefined, undefined, '30%');
     }
     showBankingServicesPanel();
 
@@ -43,7 +44,7 @@ function bankingServicesPage(): void {
 
     //footer
     const footer = addFooter(container);
-    addBackButton(footer, menuPage, 'назад');
+    addBackButton(footer, menuPage, );
     addTimer(footer, FormatOfDate['DD month YYYY']);
     addTimer(footer, FormatOfDate['HH:MM']);
 }

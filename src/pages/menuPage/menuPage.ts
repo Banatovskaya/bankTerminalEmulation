@@ -12,6 +12,9 @@ import { addFooter } from '../../components/footer/footes';
 import { addTimer, FormatOfDate} from '../../components/timers/timers';
 import { addCommonButton } from "../../components/buttons/commonButton/commonButton";
 import img from '../../assets/images/money.png';
+import { addLanguagesPanel } from '../../components/languages/languages';
+import { mainLanguage } from '../../services/mainLanguage';
+import { Languages } from '../../services/mainLanguage';
 
 function menuPage(): void {
 
@@ -21,6 +24,7 @@ function menuPage(): void {
     //header
     const header = addHeader(container);  
     addBigLogo(header);
+    addLanguagesPanel(header, menuPage);
     addCancelButton(header);
 
     //middle -> Page
@@ -31,32 +35,26 @@ function menuPage(): void {
     //left side -> sideBar
     const sideBar:HTMLElement = document.createElement('div');
     sideBar.classList.add('menuPage__sideBar');
-    sideBar.innerHTML = `<div class="menuPage__sideBarName">РОЗДІЛИ</в>`;
+    sideBar.innerHTML = `<div class="menuPage__sideBarName">${mainLanguage==Languages.Ukrainian?'РОЗДІЛИ':'SECTIONS'}</в>`;
     page.append(sideBar);
     //right side -> content
     const content:HTMLElement = document.createElement('div');
     content.classList.add('menuPage__content');
-    content.innerHTML = `<div class="menuPage__contentName">ПОСЛУГИ</div>`;
+    content.innerHTML = `<div class="menuPage__contentName">${mainLanguage==Languages.Ukrainian?'ПОСЛУГИ':'SERVISES'}</div>`;
     const contentWrap:HTMLElement = document.createElement('div');
     contentWrap.classList.add('menuPage__contentWrap'); 
     content.append(contentWrap);     
     page.append(content);
      
     function showContent() {
-        addCommonButton(contentWrap, topUpCardPage, img, 'поповнити картку', '40%');
-        addCommonButton(contentWrap, topUpMobilePhone, undefined, 'поповнити мобільний', '40%');
-        addCommonButton(contentWrap, ()=>{alert('не працює')}, undefined, undefined, '40%');
+        addCommonButton(contentWrap, topUpCardPage, img, `${mainLanguage==Languages.Ukrainian?'поповнити картку':'top up the card'}`, '40%');
+        addCommonButton(contentWrap, topUpMobilePhone, undefined, `${mainLanguage==Languages.Ukrainian?'поповнити мобільний':'top up mobile'}`, '40%');
     };
 
     function showSideBar() {
-        addCommonButton(sideBar, bankingServicesPage, img, 'банківськи послуги');
-        addCommonButton(sideBar, otherServicesPage, img, 'інші операції', );
-        addCommonButton(sideBar, ()=>{alert('не працює')}, undefined, undefined, '42%');
-        addCommonButton(sideBar, ()=>{alert('не працює')}, undefined, undefined, '40%');
-        addCommonButton(sideBar, ()=>{alert('не працює')}, undefined, undefined, '42.5%');
-        addCommonButton(sideBar, ()=>{alert('не працює')}, undefined, undefined, '42.5%');
-        addCommonButton(sideBar, ()=>{alert('не працює')}, undefined, undefined, '42.5%');
-        addCommonButton(sideBar, ()=>{alert('не працює')}, undefined, undefined, '42.5%');
+        addCommonButton(sideBar, bankingServicesPage, img, `${mainLanguage==Languages.Ukrainian?'банківські послуги':'bank servises'}`);
+        addCommonButton(sideBar, otherServicesPage, img, `${mainLanguage==Languages.Ukrainian?'інші операції':'other operations'}`, );
+        addCommonButton(sideBar, ()=>{alert('does not work')}, undefined, undefined, '42%');
     }
 
     showContent();

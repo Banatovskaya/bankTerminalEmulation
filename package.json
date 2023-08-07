@@ -2,9 +2,10 @@
   "name": "bank_terminal_emulation",
   "version": "1.0.0",
   "description": "emulation bank`s self-servise terminal ",
-  "main": "index.js",
+ 
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "start1": "node server.js",
     "start": "concurrently \"npx webpack serve --mode development --open\" \"npx json-server db.json --port 3001\"",
     "build": "webpack --mode production",
     "watch": "webpack --mode development --watch"
@@ -28,6 +29,6 @@
     "webpack-dev-server": "^4.11.1"
   },
   "dependencies": {
- 
+    "json-server": "^0.17.1"
   }
 }

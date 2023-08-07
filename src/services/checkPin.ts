@@ -1,6 +1,3 @@
-import { addBigMessageComponent } from "../components/bigMessage/bigMessage";
-import { getHTMLElement } from "./getElement";
-import startPage from "../pages/startPage/startPage";
 import { ClientData, AccessWithData } from '../interfaces/interfaces';
 import { request } from "./http";
 import { getHash } from "./getHash";

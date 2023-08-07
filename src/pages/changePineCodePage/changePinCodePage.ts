@@ -14,6 +14,8 @@ import { addBigMessageComponent } from '../../components/bigMessage/bigMessage';
 import { getHash } from '../../services/getHash';
 import { clientData, setClientData } from '../../services/data';
 import { request } from '../../services/http';
+import { mainLanguage } from '../../services/mainLanguage';
+import { Languages } from '../../services/mainLanguage';
 
 function changePinCodePage(): void {
     const container = getHTMLElement('.container');
@@ -21,7 +23,7 @@ function changePinCodePage(): void {
     
     //header
     const header = addHeader(container);  
-    addheaderName(header, undefined, "Зміна ПІН");
+    addheaderName(header, undefined, `${mainLanguage==Languages.Ukrainian?'Зміна ПІН':'change PIN'}`);
     addCancelButton(header);
 
     //middle -> Page
@@ -36,7 +38,7 @@ function changePinCodePage(): void {
    
     //footer
     const footer = addFooter(container);
-    addBackButton(footer, menuPage, 'назад');
+    addBackButton(footer, menuPage, );
     addTimer(footer, FormatOfDate['HH:MM']);
 
     async function getPinCode(){
@@ -44,7 +46,7 @@ function changePinCodePage(): void {
         let firstPIN = await addPinCode(changePin);
         let title = document.createElement('div');
         title.classList.add('changePin__title');
-        title.innerHTML=`Продублюйте ПІН`;
+        title.innerHTML=`${mainLanguage==Languages.Ukrainian?'Продублюйте ПІН':'repeat PIN'}`;
         changePin.append(title );
         let secondPin = await addPinCode(changePin);
         
@@ -56,10 +58,10 @@ function changePinCodePage(): void {
             request(data.id, undefined, 'PUT', JSON.stringify(newClientData))
             .then(()=>{
                 setClientData(newClientData)
-                addBigMessageComponent(changePin, 'ПИН код змінено', ()=>menuPage());
+                addBigMessageComponent(changePin, `${mainLanguage==Languages.Ukrainian?'ПІН код змінено':'PIN was changed'}`, ()=>menuPage());
             })      
         } else {
-            addBigMessageComponent(changePin, 'ПИН не співпадає спробуйте ще раз', ()=>changePinCodePage());
+            addBigMessageComponent(changePin, `${mainLanguage==Languages.Ukrainian?'ПІН не співпадає, спробуйте ще раз':'PIN does not match, please try again '}`, ()=>changePinCodePage());
         }
     }
     getPinCode(); 

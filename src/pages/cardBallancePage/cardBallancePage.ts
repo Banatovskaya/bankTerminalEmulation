@@ -10,6 +10,8 @@ import { addBackButton } from '../../components/buttons/backButton/backButton';
 import { addTimer, FormatOfDate } from '../../components/timers/timers';
 import { clientData } from '../../services/data';
 import menuPage from '../menuPage/menuPage';
+import { Languages } from '../../services/mainLanguage';
+import { mainLanguage } from '../../services/mainLanguage';
 
 function cardBallancePage(): void {
     const container = getHTMLElement('.container');
@@ -27,16 +29,16 @@ function cardBallancePage(): void {
     page.classList.add(Pages.CardBallancePage);
     const cash: ClientData = clientData;
     page.innerHTML = `  <div class="cardBallance">
-                            <div class="cardBallance__value">залишок: ${cash.cashBalance} грн</div>
+                            <div class="cardBallance__value">${mainLanguage==Languages.Ukrainian?'залишок':'balance'}: ${cash.cashBalance} грн</div>
                         </div>`
     
     container.append(page);  
 
     //footer
     const footer = addFooter(container);
-    addBackButton(footer, menuPage, 'назад');
+    addBackButton(footer, menuPage, );
     addTimer(footer, FormatOfDate['DD month YYYY']);
     addTimer(footer, FormatOfDate['HH:MM']);
 }
 
-export default cardBallancePage
+export default cardBallancePage;

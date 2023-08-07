@@ -17,6 +17,8 @@ import { clientData } from '../../services/data';
 import { request } from '../../services/http';
 import { ClientData } from '../../interfaces/interfaces';
 import img from '../../assets/images/money.png';
+import { Languages } from '../../services/mainLanguage';
+import { mainLanguage } from '../../services/mainLanguage';
 
 function topUpCardPage(): void {
     const container = getHTMLElement('.container');
@@ -24,7 +26,7 @@ function topUpCardPage(): void {
 
     //header 
     const header = addHeader(container); 
-    addheaderName(header, img, "Поповнити картку");
+    addheaderName(header, img, `${mainLanguage==Languages.Ukrainian?'Поповнити картку':'Top up the card'}`);
     addCancelButton(header);
 
     // middle -> Page
@@ -51,7 +53,7 @@ function topUpCardPage(): void {
             input.value = '';
         } else if(+input.value > 1000000){
             errMessage.style.visibility = 'visible'; 
-            errMessage.innerHTML = 'внесіть сумму не більше 1 000 000 грн' ;
+            errMessage.innerHTML = `${mainLanguage==Languages.Ukrainian?'внесіть сумму не більше 1 млн грн':'enter amount no more than 1 million'}` ;
             forwardButton.style.visibility = 'hidden';
         } else {
             forwardButton.style.visibility = 'visible';
@@ -60,7 +62,7 @@ function topUpCardPage(): void {
     }
 
     function takeMoney(value: string){
-        addBigMessageComponent(page, 'покладіть гроші в купюроприймач і натисніть ОК', ()=>{
+        addBigMessageComponent(page, `${mainLanguage==Languages.Ukrainian?'покладіть гроші в купюроприймач і натисніть ОК':'put money to the bill acceptor and press OK'}`, ()=>{
             let data = clientData;
             let newClientData: ClientData;
             newClientData = {...data};
@@ -68,7 +70,7 @@ function topUpCardPage(): void {
             request(data.id, undefined, 'PUT', JSON.stringify(newClientData))
             .then(()=>{
                 setClientData(newClientData)
-                addBigMessageComponent(page, 'рахунок поповнено',);
+                addBigMessageComponent(page, `${mainLanguage==Languages.Ukrainian?'рахунок поповнено':'card replenished'}`,);
             })
         });
         input.value = '';   
@@ -91,7 +93,7 @@ function topUpCardPage(): void {
             input.value = '';
             forwardButton.style.visibility = 'hidden';
             errMessage.style.visibility = 'visible'; 
-            errMessage.innerHTML = 'тільки цифри' ;        
+            errMessage.innerHTML = `${mainLanguage==Languages.Ukrainian?'тільки цифри':'only numbers'}` ;        
         }
     })
        
@@ -99,9 +101,9 @@ function topUpCardPage(): void {
 
     //footer
     const footer = addFooter(container);
-    addBackButton(footer, menuPage, 'назад');
+    addBackButton(footer, menuPage,);
     addTimer(footer, FormatOfDate['DD month YYYY']);   
-    const forwardButton = addForwardButton(footer, () => takeMoney(input.value), 'Далі');
+    const forwardButton = addForwardButton(footer, () => takeMoney(input.value), );
     forwardButton.style.visibility = 'hidden';
 }
 
