@@ -19,13 +19,13 @@ export function addLanguagesPanel(elementToAppend: HTMLElement, elementToReLoad:
         </option>`
     }
        
-    const selectTag = `<select class="languages__select")> 
+    const selectTag = `<select class="languagesSelect")> 
                         ${options}
                         </select>`
     languageWrap.innerHTML = selectTag;
     elementToAppend.append(languageWrap);
 
-    const select:HTMLSelectElement = languageWrap.querySelector('.languages__select')!;
+    const select:HTMLSelectElement = languageWrap.querySelector('.languagesSelect')!;
    
     select.addEventListener('change', ()=>{
         setMainLanguage(select.value);

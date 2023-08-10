@@ -14,9 +14,13 @@
     box-shadow: 5px 5px 5px 5px $secondaryButtonShadow;
     border: none;
     border-radius: 8px;
+    cursor: pointer;
     &__img{
         height: 20px;
         align-self: flex-start;
         justify-self:flex-start;
     }
+}
+.commonButton:hover{
+        background-color: $pointerButtonColor;
 }

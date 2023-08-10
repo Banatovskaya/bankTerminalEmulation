@@ -8,7 +8,6 @@ export function addCommonButton(elementToAppend: HTMLElement, func : Function, i
     elementToAppend.append(button);
     button.style.width = width;
     button.addEventListener('click', () => {
-        console.log('fff')
         func()
     });
     return button;
